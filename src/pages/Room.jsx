@@ -42,8 +42,8 @@ const Room = () => {
   //     </li>
   //   )
   // })
-  
-  
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
     // firestoreに送信する処理
@@ -52,7 +52,7 @@ const Room = () => {
     db.collection("messages").add({
       user: user.displayName,//kei
       content: value, //送信するメッセージの内容
-      time:time //投稿した日時のデータが入っている数値型のtimeを追加
+      time: time //投稿した日時のデータが入っている数値型のtimeを追加
     })
   }
 
@@ -63,14 +63,14 @@ const Room = () => {
         <ul>
           {messages ?
             //messagesのデータがあったら
-            messages.sort((a,b)=>{
-              if(a.time<b.time) return -1
-              if(a.time>b.time) return 1
+            messages.sort((a, b) => {
+              if (a.time < b.time) return -1
+              if (a.time > b.time) return 1
               return 0
             })
-            .map((message) => (
-              <Item user={message.user} content={message.content} />
-            ))
+              .map((message) => (
+                <Item user={message.user} content={message.content} />
+              ))
             :
             <CircularProgress /> //messagesのデータがなかったら
           }
